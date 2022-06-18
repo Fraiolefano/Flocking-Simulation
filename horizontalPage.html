@@ -1,0 +1,191 @@
+<div id="container" style="width:100%;height:100vh;">
+
+    <div id="l" style="width:75%;height:90vh;background-color:transparent; float:left;">
+        <p id ="loadingText" style="position:absolute;top:50vh;font-size:42px;color: white;">Caricamento  dei file audio in corso ...</p>
+        <main>
+
+        </main>
+    </div>
+    <div id="r" style="width:24%;height:90vh; float:right;overflow-y: scroll;overflow-x: hidden;">
+        <p style="margin-bottom: 0px; color:white;display: inline;">Cohesion magnitude</p>
+        <input type="number" id="lCoh" style="display: inline; width:10%; text-align: center; background-color: transparent; border: none;color:white;" readonly/>
+        <input type="range" id="cohesion" min=-0.1 max=0.1 step=0.01 style="width:93%;margin-top:0px;" oninput="lCoh.value=this.value;InputManager.cohFactor=float(this.value);"/>
+        
+        <p style="margin-bottom: 0px; color:white;display: inline;">Alignment magnitude</p>
+        <input type="number" id="lAli" style="display: inline; width:10%; text-align: center; background-color: transparent; border: none;color:white;" readonly/>
+        <input type="range" id="alignment" min=-0.2 max=0.2 step=0.01 style="width:93%;margin-top:0px;" oninput="lAli.value=this.value;InputManager.aliFactor=float(this.value);"/>
+        
+        <p style="margin-bottom: 0px; color:white;display: inline;">Separation factor</p>
+        <input type="number" id="lSep" style="display: inline; width:10%; text-align: center; background-color: transparent; border: none;color:white;" readonly/>
+        <input type="range" id="separation" min=-2 max=2 step=0.1 style="width:93%;margin-top:0px;" oninput="lSep.value=this.value;InputManager.sepFactor=float(this.value);"/>
+
+        <p style="margin-bottom: 0px; color:white;">Shape:</p>
+
+        <div id="showDiv" style="width:100%;display: flex; flex-wrap: wrap;">
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">bird</p>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">triangle</p>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">circle</p>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">line</p>
+            </div>
+
+            <div style="width: 25%;height:100%;">
+                <input type="radio" name="shapeButton" value=0 style="border-radius:100%; width: 20px; height:20px;" onchange="if(this.checked){InputManager.shapeSelected=parseInt(this.value);}"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="radio" name="shapeButton" value=1 style="border-radius:100%; width: 20px; height:20px;"onchange="if(this.checked){InputManager.shapeSelected=parseInt(this.value);}"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="radio" name="shapeButton" value=2 style="border-radius:100%; width: 20px; height:20px;"onchange="if(this.checked){InputManager.shapeSelected=parseInt(this.value);}"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="radio" name="shapeButton" value=3 style="border-radius:100%; width: 20px; height:20px;"onchange="if(this.checked){InputManager.shapeSelected=parseInt(this.value);}"/>
+            </div>
+        </div>
+
+        <p style="margin-bottom: 0px; color:white;">Coloration:</p>
+
+        <div id="showDiv" style="width:100%;display: flex; flex-wrap: wrap;">
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">groups</p>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">gradient</p>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">mono</p>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">monoRND</p>
+            </div>
+
+            <div style="width: 25%;height:100%;">
+                <input type="radio" name="colorButton" value=0 style="border-radius:100%; width: 20px; height:20px;" onchange="if(this.checked){InputManager.changeColoration(parseInt(this.value));}"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="radio" name="colorButton" value=1 style="border-radius:100%; width: 20px; height:20px;"onchange="if(this.checked){InputManager.changeColoration(parseInt(this.value));}"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="radio" name="colorButton" value=2 style="border-radius:100%; width: 20px; height:20px;"onchange="if(this.checked){InputManager.changeColoration(parseInt(this.value));}"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="radio" name="colorButton" value=3 style="border-radius:100%; width: 20px; height:20px;"onchange="if(this.checked){InputManager.changeColoration(parseInt(this.value));}"/>
+            </div>
+
+
+            <div style="width: 25%;height:100%;">
+                <input type="color" name="colorPick" value=0 style="width: 50%; height:20px;padding: 0%;" onchange="InputManager.changeColoration(0);"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="color" name="colorPick" value=1 style="width: 40%;padding: 0%;right: 0px;"onchange="InputManager.changeColoration(1);"/>
+                <input type="color" name="colorPick" value=2 style="width: 40%;padding: 0%;margin-left: 0%;"onchange="InputManager.changeColoration(1);"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="color" name="colorPick" value=3 style="width: 50%; height:20px;padding: 0%;"onchange="InputManager.changeColoration(2);"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="color" name="colorPick" value=4 style="width: 50%; height:20px;padding: 0%;"onchange="InputManager.changeColoration(3);"/>
+            </div>
+        </div>
+
+
+        <p style="margin-bottom: 0px; color:white;">Obstacles:</p>
+        <div id="showDiv" style="width:100%; overflow-x: auto;overflow-y: hidden; white-space: nowrap; display: inline-block;">
+            <div style="width: 20%;height:100%;display: inline-block;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">mouse</p>
+            </div>
+            <div style="width: 20%;height:100%;display: inline-block;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">walls</p>
+            </div>
+
+            <div style="width: 20%;height:100%;display: inline-block;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">draw</p>
+            </div>
+            <div style="width: 20%;height:100%;display: inline-block;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">clear</p>
+            </div>
+
+            <br>
+            
+            <div style="width: 20%;height:100%;display: inline-block;">
+                <input type="checkbox" id="obstacleMouse" class="obstacleButton" style="width: 20px; height:20px;" onchange="InputManager.mouseObstacle();"/>
+            </div>
+            <div style="width: 20%;height:100%;display: inline-block;">
+                <input type="checkbox" id="obstacleWalls" class="obstacleButton" style="width: 20px; height:20px;"/>
+            </div>
+
+            <div style="width: 20%;height:100%;display: inline-block;">
+                <input type="checkbox" name="obstaclePoint" class="obstacleButton" style="width: 20px; height:20px;" onclick="InputManager.manageCheckedDrawers(this)"/>
+            </div>
+            <div style="width: 20%;height:100%;display: inline-block;">
+                <input type="button" id="obstacleClear" class="obstacleButton" style="border-radius:100%; width: 20px; height:20px;" onclick="InputManager.clearObstacles();"/>
+            </div>
+        </div>
+
+        <div id="PredatorDiv" style="width:100%;height:60px;">
+            <p style="margin-bottom: 0px; color:white;">Creatures:</p>
+            <div style="width:31%;display: inline-block;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">prey</p>
+            </div>
+            <div style="width:31%;display: inline-block;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">predator</p>
+            </div>
+            <div style="width:31%;display: inline-block;">
+                <p style="font-size:12px;margin-top: 0px; color:white;display: inline;">clear</p>
+            </div>
+            <br>
+            <div style="width:31%;display: inline-block;">
+                <input type="checkbox" name="preyPoint" class="creatureButton" style="width: 20px; height:20px;" onclick="InputManager.manageCheckedDrawers(this)"/>
+            </div>
+            <div style="width:31%;display: inline-block;">
+                <input type="checkbox" name="predatorPoint" class="creatureButton" style="width: 20px; height:20px;" onclick="InputManager.manageCheckedDrawers(this)"/>
+            </div>
+            <div style="width:31%;display: inline-block;">
+                <input type="button" id="predatorClear" class="creatureButton" style="border-radius:100%; width: 20px; height:20px;" onclick="InputManager.clearPredators();"/>
+            </div>
+            
+
+        </div>
+        <br>
+        <p style="margin-bottom: 0px; color:white;display: inline-block;">Audio:</p>
+        <input type="checkbox" id="audioButton" style="width: 20px; height:20px;" onclick="InputManager.manageAudio()"/>
+
+
+        <p style="margin-bottom: 0px; color:white;">Show:</p>
+        <div id="showDiv" style="width:100%;display: flex; flex-wrap: wrap;">
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">cohesion</p>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">alignment</p>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">separation</p>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <p style="font-size:12px;margin-top: 0px; color:white;">perception</p>
+            </div>
+
+            <div style="width: 25%;height:100%;">
+                <input type="checkbox" id="viewerCoh" style="border-radius:100%; width: 20px; height:20px;"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="checkbox" id="viewerAli" style="border-radius:100%; width: 20px; height:20px;"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="checkbox" id="viewerSep" style="border-radius:100%; width: 20px; height:20px;"/>
+            </div>
+            <div style="width: 25%;height:100%;">
+                <input type="checkbox" id="viewerSense" style="border-radius:100%; width: 20px; height:20px;"/>
+            </div>
+        </div>
+
+    </div>
+    
+    </div>
