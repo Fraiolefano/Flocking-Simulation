@@ -1,3 +1,3 @@
-# Flocking-Simulation by Fraiolefano
+# Flocking Simulation by Fraiolefano
 
-https://fraiolefano.altervista.org/pages/coding/programs/flockingSimulation/index.php?
+Web version: https://fraiolefano.altervista.org/pages/coding/programs/flockingSimulation/index.php
