@@ -1,7 +1,7 @@
 let omega=12.5663;//(2*PI)/0.5;
 // wingLines=[];
-cohesionData=[]; //tentativo di migliorare le prestazioni su mobile, purtroppo fallito
-function preloadWingLines()  //preload dei valori alari per migliorare leggermente le prestazioni
+cohesionData=[]; //  *!* = tentativo di migliorare le prestazioni su mobile, purtroppo fallito
+function preloadWingLines()  // *!* preload dei valori alari per migliorare leggermente le prestazioni
 {
     for (let c=0;c<100;c++)
     {
@@ -9,14 +9,14 @@ function preloadWingLines()  //preload dei valori alari per migliorare leggermen
         for (let a=0;a<360;a++)
         {
             let wingLine=1.0+(5.0*cos((omega*(0.01666*a))+c));  //0.0166 = 60 fps
-            wingLine=int(wingLine);  // la conversione in intero è fondamentale per il corretto funzionamento su mobile
+            wingLine=int(wingLine);  // *!*
             values.push(wingLine);
         }
         wingLines.push(values);
     }
 }
 
-function drawCohesion()  //migliora leggermente le prestazioni su mobile, le rallenta su pc quindi boh. In generale disegnare le linee su mobile riduce drasticamente le prestazioni
+function drawCohesion()  // *!*
 {
     if (InputManager.viewerCoh.checked && InputManager.cohFactor!=0)
     {
@@ -223,7 +223,7 @@ class Boid
 
 
 
-    separationAligmentCohesion()  // in un unica funzione per ridurre i cicli for e ottimizzare il codice, fondamentale per mobile
+    separationAligmentCohesion()  // *!*
     {
         let detectedSeparation=0;
         let detectedAlignment=0;
